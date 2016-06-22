@@ -1,6 +1,4 @@
 {
-  "webroot": "wwwroot",
-  "version": "1.0.0-*",
   "buildOptions": {
     "emitEntryPoint": true,
     "preserveCompilationContext": true
@@ -18,16 +16,16 @@
   },
   "tools": {
     "Microsoft.AspNetCore.Server.IISIntegration.Tools": {
-      "version": "1.0.0-*",
-      "imports": "portable-net45+wp80+win8+wpa81+dnxcore50"
+      "version": "1.0.0-preview2-final"
     }
   },
   "scripts": {
     "postpublish": "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%"
   },
   "runtimeOptions": {
-    "gcServer": false,
-    "gcConcurrent": true
+    "configProperties": {
+      "System.GC.Server": true
+    }
   },
   "frameworks": {
     "netcoreapp1.0": {
@@ -39,22 +37,14 @@
       },
       "imports": [
         "dotnet5.6",
-        "dnxcore50",
         "portable-net45+win8"
       ]
     },
     "net461": {
       "dependencies": {
         "Microsoft.Extensions.Logging.EventLog": "1.0.0"
-      },
-      "frameworkAssemblies": {
-        "System.Runtime": { "type": "build" },
-        "System.Threading.Tasks": ""
       }
     }
-  },
-  "runtimes": {
-    "win7-x64": { }
   },
   "publishOptions": {
     "include": [
