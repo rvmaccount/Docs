@@ -88,6 +88,11 @@ ASP.NET Core supports a convention-based approach to configuring an application'
 
 When an ASP.NET Core application starts, the ``Startup`` class is used to bootstrap the application, load its configuration settings, etc. (:doc:`learn more about ASP.NET startup <startup>`). However, if a class exists named ``Startup{EnvironmentName}`` (for example ``StartupDevelopment``), and the ``Hosting:Environment`` environment variable matches that name, then that ``Startup`` class is used instead. Thus, you could configure ``Startup`` for development, but have a separate ``StartupProduction`` that would be used when the app is run in production. Or vice versa.
 
+Note
+
+Unlike in other places the specified environment name in this case IS CASE SENSITIVE. Assuming the environment is Development; the environment specific startup class has to match StartupDevelopment.
+
+
 The following ``StartupDevelopment`` file from this article's sample project is run when the application is set to run in a Development environment:
 
 .. literalinclude:: environments/sample/src/Environments/StartupDevelopment.cs
